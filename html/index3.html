@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style> 
+
         * {
             margin: 0;
             padding: 0;
@@ -22,9 +23,10 @@
             margin-left: 20px;
             border: 2px dashed cornflowerblue;
             border-radius: 3px;
+            margin-bottom: 30px;
         }
 
-       .block {
+        .block {
             max-width: 550px;
             margin: 0 auto 30px;
             border: 3px solid cornflowerblue;
@@ -32,7 +34,7 @@
             background: rgba(100, 148, 237, 0.15);
         }
 
-        .block > section {
+        section {
             max-width: 500px;
             margin: 0 auto 30px;
             border-radius: 3px;
@@ -40,8 +42,8 @@
         }
 
         p {
-            margin: 0 auto 30px;
             font-size: 1.2rem;
+            margin: 0 0 30px 30px;
         }
 
         b {
@@ -49,7 +51,7 @@
         }
 
         article {
-            max-width: 450px;
+            max-width: 430px;
             margin: 0 auto 30px;
             border-radius: 3px;
             background: white;
@@ -57,7 +59,8 @@
         }
 
         article > p {
-            max-width: 400px;
+            max-width: 380px;
+            margin: 0 auto 30px;
         }
 
         .title__orange {
@@ -80,17 +83,16 @@
             border: 3px solid #c983f5;
         }
 
-       
-
-
     </style>
 </head>
 <body>
     <h1>html</h1>
     <div class="wrapper">
         <h2>body</h2>
+
         <header class="block">
             <h3>header</h3>
+            
             <section class="section__orange">
                 <h4 class="title__orange">h1</h4>
                 <p><b>Сайт начинающего верстальщика</b></p>
@@ -99,12 +101,15 @@
 
         <main class="block">
             <h3>main</h3>
+
             <section class="section__purple">
                 <h4 class="title__purple">nav</h4>
                 <p>Навигация</p>
             </section>
+
             <section class="section__purple">
                 <h4 class="title__purple">section</h4>
+
                 <article>
                     <h5 class="title__pink">p</h5>
                     <p>
@@ -113,22 +118,26 @@
                         появился инструктор - Кекс, который не позволит мне расслабиться и будет следить за моими успехами.
                     </p>
                 </article>
+
                 <article>
                     <h5 class="title__pink">p</h5>
                     <p>
                         Моё первое задание - вести дневник и честно писать обо всех своих свершениях.
                     </p>
                 </article>
+
             </section>
+
             <section class="section__purple">
                 <h4 class="title__purple">section</h4>
                 <p>Раздел про навыки</p>
             </section>
-        </main>   
-
-
-
-
+        </main>
+        
+        <footer class="block">
+            <h3>footer</h3>
+            <p>Подвал сайта</p>
+        </footer>
 
     </div>
 </body>
