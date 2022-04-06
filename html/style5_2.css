@@ -1,0 +1,25 @@
+table {
+    width: 600px;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px 50px;
+}
+
+th, td {
+    border: 2px solid black;
+    text-align: center;
+}
+
+thead, .color {
+    background: lightgray;
+    font-weight: 800;
+}
+
+.right {
+    text-align: right;
+}
+
+
+

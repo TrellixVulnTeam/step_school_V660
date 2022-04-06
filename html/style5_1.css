@@ -1,0 +1,38 @@
+table {
+    width: 800px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+caption {
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+
+th, td {
+    border: 3px solid gray;
+    text-align: center;
+}
+
+th {
+    font-style: italic;
+    font-size: 1.25rem;
+}
+
+td {
+    font-size: 0.875rem;
+}
+
+.gray {
+    background: lightgray;
+}
+
+.white {
+    background: white;
+}
+
+.location {
+    font-style: normal;
+    font-size: 1.75rem;
+    font-weight: 800; 
+}
