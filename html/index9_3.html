@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style9_3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script defer src="https://kit.fontawesome.com/1217d9dee1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Personal details</h1>
+        <form action="#">
+            <ul>
+                <li class="first__name">
+                    <label for="first_name"><i class="fa-solid fa-user"></i>First Name</label>
+                    <input id="first_name" type="text" name="user_first_name" placeholder="First Name">
+                </li>
+                <li class="last__name">
+                    <label for="last_name">Last Name</label>
+                    <input id="last_name" type="text" name="user_last_name" placeholder="Last Name">
+                </li>
+                <li class="text">
+                    <label for="text"><i class="fa-solid fa-house"></i>Address</label>
+                    <textarea id="text" name="user_text" rows="6"></textarea>
+                </li>
+                <li class="country">
+                    <label for="country"><i class="fa-solid fa-flag"></i>Country</label>
+                    <div class="select__wrapper">
+                        <select id="country" name="country" >
+                            <option selected disabled>Select Country</option>
+                            <option>USA</option>
+                            <option>Belarus</option>
+                            <option>Poland</option>
+                            <option>Ukraine</option>
+                            <option>France</option>
+                            <option>England</option>
+                        </select>
+                    </div>
+                </li>
+                <li class="mail">
+                    <label for="mail"><i class="fa-solid fa-envelope"></i>Email</label>
+                    <input id="mail" type="mail" name="user_mail" placeholder="example@email.com">
+                </li>
+                <li class="password">
+                    <label for="password"><i class="fa-solid fa-lock"></i>Password</label>
+                    <input id="password" type="password" name="user_password" placeholder="Password">
+                </li>
+                <li class="confirm">
+                    <label for="confirm"><i class="fa-solid fa-arrow-rotate-right"></i>Confirm password</label>
+                    <input id="confirm" type="password" name="user_confirm_password" placeholder="Confirm Password">
+                </li>
+                <li class="pincode">
+                    <label for="pincode"><i class="fa-solid fa-thumbtack"></i>Pincode</label>
+                    <input id="pincode" type="password" name="user_pincode" placeholder="Pincode">
+                </li>
+                <li class="number">
+                    <label for="number"><i class="fa-solid fa-mobile-screen-button"></i>Contact Number</label>
+                    <input id="number" type="tel" name="user-tel" placeholder="Contact Number">
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>

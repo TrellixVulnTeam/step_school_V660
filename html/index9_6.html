@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style9_6.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script defer src="https://kit.fontawesome.com/1217d9dee1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Responsive Registration <br> Form</h1>
+        <form action="#">
+            <ul>
+                <li class="mail">
+                    <label for="mail"><i class="fa-solid fa-envelope"></i></label>
+                    <input id="mail" type="mail" name="user_mail" placeholder="Email">
+                </li>
+                <li class="password">
+                    <label for="password"><i class="fa-solid fa-lock"></i></label>
+                    <input id="password" type="password" name="user_password" placeholder="Password">
+                </li>
+                <li class="retype">
+                    <label for="retype_password"><i class="fa-solid fa-lock"></i></label>
+                    <input id="retype_password" type="password" name="user_retype_password" placeholder="Re-type Password">
+                </li>
+                <li class="first">
+                    <label for="first_name"><i class="fa-solid fa-user"></i></label>
+                    <input id="first_name" type="text" name="user_first_name" placeholder="First Name">
+                </li>
+                <li class="last">
+                    <label for="last_name"><i class="fa-solid fa-user"></i></label>
+                    <input id="last_name" type="text" name="user_last_name" placeholder="Last Name">
+                </li>
+                <li class="sex">
+                    <input id="man" type="radio" name="sex">
+                    <label for="man">Male</label>
+                    <input id="female" type="radio" name="sex">
+                    <label for="female">Female</label>
+                </li>
+                <li class="country">
+                    <select id="country" name="country" >
+                        <option selected disabled>Select a country</option>
+                        <option>USA</option>
+                        <option>Belarus</option>
+                        <option>Poland</option>
+                        <option>Ukraine</option>
+                        <option>France</option>
+                        <option>England</option>
+                    </select>
+                </li>
+                <li class="first_box">
+                    <input id="agree" type="checkbox" name="user_agree">
+                    <label for="agree">I agree with terms and conditions</label>   
+                </li>
+                <li class="second_box">
+                    <input id="want" type="checkbox" name="user_agree">
+                    <label for="want">I want to receive the newsletter</label>   
+                </li>
+                <li>
+                    <button type="submit">Register</button>
+                </li>
+
+            </ul>
+        </form>
+    </div>
+    
+</body>
+</html>

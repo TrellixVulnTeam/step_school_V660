@@ -1,0 +1,27 @@
+table {
+    width: 550px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+table tr:last-child th,
+table tr:nth-child(n + 7) td:last-child {
+    text-align: right;
+}
+
+th,td {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 5px;
+}
+
+th {
+    font-weight: 700;
+}
+

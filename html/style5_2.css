@@ -1,6 +1,7 @@
 table {
-    width: 600px;
+    width: 510px;
     border-collapse: collapse;
+    font-family: 'Roboto', sans-serif;
 }
 
 th {

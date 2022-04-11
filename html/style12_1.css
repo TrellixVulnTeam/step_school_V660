@@ -1,0 +1,54 @@
+.container {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 390px;
+    margin: 0 auto;
+}
+
+.container > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    background: #0f1629;
+    color: white;
+    padding: 30px 0;
+}
+
+nav {
+    background: #ef3d4d;
+    color: white;
+    padding: 30px 0;
+}
+
+.hero {
+    background: #4c86c6;
+    color: white;
+    padding: 30px 0;
+}
+
+main {
+    background: #24344b;
+    color: white;
+    padding: 30px 0;
+}
+
+.banner {
+    background: #fed269;
+    padding: 30px 0;
+}
+
+.extra {
+    background: #4dbd97;
+    padding: 30px 0;
+}
+
+.image {
+    background: #c1e4e6;
+    padding: 30px 0;
+}

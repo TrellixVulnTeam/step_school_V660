@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: #01e37f;
+}
+
+ul {
+    list-style: none;
+}
+
+.wrapper {
+    width: 600px;
+    padding: 30px 0;
+    margin: 20px auto 0;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    gap: 50px;
+}
+
+.picture {
+    display: flex;
+    flex-direction: column;
+    width: 285px;
+    background: #a7e522;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 0 #a6a6a6;
+    margin-left: -40px;
+}
+
+.picture img {
+    width: 100%;
+}
+
+figure {
+    position: relative;
+    flex: 1 0 auto;
+}
+
+figure > img {
+    filter: drop-shadow(0 25px 35px #a6a6a6);
+    position: absolute;
+    top: 10%;
+    right: 20%;
+}
+
+.picture ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: white;
+    padding: 10px 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.picture li {
+    border: 1px solid #a6a6a6;
+    border-radius: 5px;
+    padding: 5px;
+    width: 20%;
+}
+
+h1 {
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.coast {
+    color: #ff3f40;
+    margin-bottom: 15px
+}
+
+.coast span:first-child{
+    font-size: 1.5rem;
+    padding-right: 10px;
+}
+
+.coast span:last-child{
+    font-size: 4rem;
+}
+
+h2 {
+    text-transform: uppercase;
+    color: #a6a6a6;
+    font-size: 0.625rem;
+    margin-bottom: 10px;
+}
+
+.list__select,
+.list__benefits {
+    margin-bottom: 30px;
+}
+
+.list__select ul{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.list__select li:first-child img {
+    border: 1px solid #a6a6a6;
+    border-radius: 5px;
+    padding: 4px;
+    width: 40px;
+}
+
+.list__select img {
+    width: 30px;
+
+}
+
+.list__benefits ul {
+    font-size: 0.85rem;
+    list-style: initial;
+    padding-left: 10px;
+}
+
+.list__benefits li:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+button {
+    border: none;
+    background: #ff3f40;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
