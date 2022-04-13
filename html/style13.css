@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.container {
+    display: grid;
+    grid-template: repeat(15, 1fr) / 1fr;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.container > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.tablet, .desktop {
+    display: none;
+}
+
+header {
+    background: #0f1629;
+    color: white;
+}
+
+nav {
+    background: #ef3d4d;
+    color: white;
+}
+
+.hero {
+    background: #4c86c6;
+    color: white;
+    grid-row-start: span 3;
+}
+
+main {
+    background: #24344b;
+    color: white;
+    grid-row-start: span 3;
+}
+
+.banner {
+    background: #fed269;
+    grid-row-start: span 2;
+}
+
+.extra {
+    background: #4dbd97;
+    grid-row-start: span 2;
+}
+
+.image {
+    background: #c1e4e6;
+    grid-row-start: span 2;
+}
+
+@media (min-width: 481px) {
+    .container {
+        grid-template: repeat(14, 1fr)/repeat(4, 1fr);
+    }
+
+    .tablet {
+        display: flex;
+        grid-column: 1/5;
+    }
+
+    .mobile, .desktop {
+        display: none;
+    }
+
+    header{
+        grid-column: 1/5;
+    }
+
+    .hero {
+        grid-area: 3/1/7/5;
+    }
+
+    main {
+        grid-area: 7/2/11/5;
+    }
+
+    nav {
+        grid-area: 7/1/15/2;
+    }
+
+    .banner {
+        grid-area: 11/2/13/5;
+    }
+
+    .extra {
+        grid-column: 2/4;
+    }
+}
+
+@media (min-width: 769px) {
+    .container {
+        grid-template: repeat(14, 1fr)/repeat(4, 1fr);
+    }
+
+    .desktop {
+        display: flex;
+        grid-column: 1/5;
+    }
+
+    .mobile, .tablet {
+        display: none;
+    }
+
+    header{
+        grid-column: 1/2;
+    }
+
+    nav {
+        grid-area: 2/2/3/5;
+    }
+
+    .hero {
+        grid-area: 3/1/9/5;
+    }
+
+    main {
+        grid-area: 9/1/13/3;
+    }
+
+    .image {
+        grid-area: 9/4/11/5;
+    }
+
+    .extra {
+        grid-area: 11/4/13/5;
+    }
+
+    .banner {
+        grid-area: 13/1/15/5;
+    }
+}

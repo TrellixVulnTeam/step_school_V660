@@ -13,14 +13,16 @@ th, td {
     text-align: center;
 }
 
-thead, .color {
+th, tbody td:first-child {
     background: lightgray;
     font-weight: 800;
 }
 
 .right {
-    text-align: right;
+   text-align: right;
 }
+
+
 
 
 
