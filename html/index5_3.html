@@ -8,13 +8,7 @@
     <link rel="stylesheet" href="style5_3.css">
 </head>
 <body>
-    <table>
-        <colgroup>
-        <col>
-        <col>
-        <col>
-        <col class="center">
-        </colgroup>
+    <table class="outline">
         <thead>
             <tr>
                 <th rowspan="3">Day</th>
@@ -34,16 +28,23 @@
                 <td rowspan="2">Monday</td>
                 <td rowspan="2">8:00 a.m.</td>
                 <td rowspan="2">5:00 p.m.</td>
-                <td>Introduction to XML</td>
+                <td class="center">Introduction to XML</td>
             </tr>
             <tr>
-                <td>Validity: DTD and Relax NG</td>
+                <td class="center">Validity: DTD and Relax NG</td>
             </tr>
             <tr>
                 <td rowspan="3">Tuesday</td>
                 <td>8:00 a.m.</td>
                 <td>11:00 a.m.</td>
-                <td rowspan="1">XSL Transformation</td>
+                <td rowspan="3" class="cell__table">
+                    <table class="table__content">
+                        <tr><td>XPath</td></tr>
+                    </table>
+                    <table class="table__content">
+                        <tr><td>XSL Transformation</td></tr>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td>11:00 a.m.</td>
@@ -52,13 +53,12 @@
             <tr>
                 <td>2:00 p.m.</td>
                 <td>5:00 p.m.</td>
-                <td rowspan="1.5">XSL Transformation</td>
             </tr>
             <tr>
                 <td>Wednesday</td>
                 <td>8:00 a.m.</td>
                 <td>12:00 p.m.</td>
-                <td>XSL Formatting Object</td>
+                <td class="center">XSL Formatting Object</td>
             </tr>
         </tbody>
     </table>

@@ -8,6 +8,16 @@
     src: url(fonts/SegoeUI-Bold.ttf);
 }
 
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(fonts/Gilroy-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Consolas';
+    src: url(fonts/Consolas.ttf);
+}
+
 
 
 *, *::before, *::after {
@@ -22,7 +32,7 @@ a {
     color: inherit;
 }
 
-ul, ol, li {
+ul {
     list-style: none;
 }
 
@@ -46,10 +56,6 @@ html, body {
 }
 
 /* ********************************************************************************** */
-
-
-
-
 
 .header__container {
     display: flex;
@@ -79,6 +85,7 @@ html, body {
     display: grid;
     grid-template-columns: minmax(auto, 80px) auto minmax(auto, 300px);
     column-gap: 30px;
+    margin-bottom: 40px;
 }
 
 .person__left li {
@@ -188,22 +195,205 @@ h3 a {
 }
 
 .person__middle {
-    background: white url(/icons/Rectangle\ 3.jpg) top/contain no-repeat;
-    padding: 340px 0 50px 40px;
-}
-
-.middle__body {
+    background: rgba(255, 255, 255, 0.25) url(icons/Rectangle\ 3.jpg) top/contain no-repeat;
+    padding: 340px 40px 30px;
+    counter-reset: number;
     
 }
-
-
 
 h1 {
     font-family: 'Segoe UI';
     font-weight: 700;
     font-size: 48px;
     line-height: 60px;
+    margin-bottom: 15px;
 }
+
+.middle__body_links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.middle__body_links a {
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    border-radius: 8px;
+    padding: 3px 6px;
+}
+
+.middle__body_links a:first-child {
+    background: #EBF3FF;
+}
+
+.middle__body_links a:nth-child(2) {
+    background: #FBEBFF;
+}
+
+.middle__body_links a:nth-child(3) {
+    background: #EFEBFF;
+}
+
+.middle__body_links a:last-child {
+    background: #FFFDEB;
+}
+
+.middle__body_card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 15px;
+    margin-bottom: 35px;
+}
+
+.middle__body_card img {
+    width: 40px;
+}
+
+.middle__body_card h3 {
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.middle__body_card p {
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.middle__body_card a {
+    color: #034AFF;
+}
+
+.middle__footer p,
+.middle__footer ol {
+    font-family: 'PT Serif';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+.middle__footer ol {
+    margin-bottom: 30px;
+    padding-left: 15px;
+    line-height: initial;
+}
+
+ol li:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.middle__footer p:first-child,
+.middle__footer p:nth-child(2) {
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-family: 'Gilroy-Bold';
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+h2::before {
+    counter-increment: number;
+    content: counter(number) ". ";
+}
+
+h2~p {
+    margin-bottom: 30px;
+}
+
+.link__in__text {
+    color: #034AFF;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+pre {
+    background: #211E2B;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 0 0 20px;
+    font-family: 'Consolas';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 30px;
+}
+
+pre~p {
+    margin-bottom: 18px;
+}
+
+.fuck-tag {
+    margin-top: 30px;
+}
+
+sup {
+    font-family: 'Consolas';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background: #EDEDED;
+    padding: 4px 9px;
+    border-radius: 8px;
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: minmax(auto, 80px) auto minmax(auto, 300px);
+    column-gap: 30px;
+}
+
+.footer__body {
+    padding: 30px 0 30px 40px;
+    background: white;
+    grid-column: 2/3;
+}
+
+.footer__body li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 15px;
+    margin-bottom: 30px;
+}
+
+.footer__body h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.footer__body p {
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+h4 {
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
