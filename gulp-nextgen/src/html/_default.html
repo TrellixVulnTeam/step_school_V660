@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.min.css">
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            {% include 'html/_elements/_header.html' %}
+            <main>
+                {% include 'html/_elements/_section-cary.html' %}
+                {% include 'html/_elements/_section-welcome.html' %}
+                {% include 'html/_elements/_section-services.html' %}
+                {% include 'html/_elements/_section-specialties.html' %}
+                {% include 'html/_elements/_section-appointment.html' %}
+                {% include 'html/_elements/_section-doctors.html' %}
+                {% include 'html/_elements/_section-news.html' %}
+                {% include 'html/_elements/_section-contacts.html' %}
+            </main>
+            {% include 'html/_elements/_footer.html' %}
+        </div>
+        <script src="js/app.min.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,56 @@
+.cary__body {
+    padding-top: 167px;
+    h1 {
+        margin-bottom: 32px;
+    }
+    .button {
+        display: inline-block;
+        font-weight: 500;
+        line-height: 19px;
+        color: $primary;
+        background: $accent;
+        border-radius: 50px;
+        padding: 12px 35px;
+        margin-bottom: 117px;
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 56px;
+        margin-bottom: -50px;
+        li{
+            flex: 1 0 auto;
+            border-radius: 5px;
+            &:first-child {
+                background: $primary;
+                a{
+                    color: $white;
+                }
+               
+            }
+            &:nth-child(2) {
+                background: $accent;
+                a{
+                    color: $primary;
+                }
+            }
+            &:last-child {
+                background: $secondary;
+                a{
+                    color: $white;
+                }
+                
+            }
+           a{
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               height: 100px;
+               padding: 0 20px;
+           }
+        }
+    }
+}
+.main__cary-box {
+    background: url(/img/bg-1.jpg) center top / auto no-repeat;
+}

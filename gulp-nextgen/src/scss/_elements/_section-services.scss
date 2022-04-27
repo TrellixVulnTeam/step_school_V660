@@ -1,0 +1,84 @@
+.services__body{
+    padding-top: 64px;
+    background: rgba(21, 158, 236, 0.01);
+    h2, h3 {
+        text-align: center
+    }
+    .services__content {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 20px;
+        .services__menu {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr) auto;
+            border: 1px solid $primary;
+            flex: 1 0 157px;
+            border-radius: 5px;
+            background: $white;
+            &-item{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                &:not(:last-child):hover,
+                &:not(:last-child):focus,
+                &:not(:last-child):active {
+                    background: $primary;
+                    color: $accent;
+                    svg{
+                        path{
+                            fill: $accent;
+                        }
+                    }
+                }
+                &:last-child {
+                    padding: 12px 0;
+                    background: $primary;
+                    color: $accent;
+                }
+            }
+        }
+        .services__list {
+            p{  
+                color: $black;
+                &:first-child {
+                    font-weight: 500;
+                    font-size: 26px;
+                    line-height: 30px;
+                    margin-bottom: 24px;
+                    color: black;
+                }
+                &:last-child {
+                    margin-top: 16px;
+                }
+                
+            }
+            ul {
+                margin-bottom: 32px;
+                display: grid;
+                grid-template: repeat(3, auto)/repeat(2, 1fr);
+                gap: 16px 38px;
+                li{
+                    &:before {
+                        content: "";
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50px;
+                        background: $secondary;
+                        margin-right: 10px;
+                        display: inline-block;
+                    }  
+                }              
+            }
+        }
+        .services__img {
+            display: flex;
+            flex-direction: column;
+            gap: 21px;
+        }
+    
+    }
+}
+
