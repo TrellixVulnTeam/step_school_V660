@@ -1,64 +1,16 @@
 :root {
     font-family: 'WorkSans';
     font-weight: 400;
-	line-height: 140%;
-	font-size: 16px;
+    line-height: 140%;
+    font-size: 16px;
     color: $black;
 }
 
 ._container {
     max-width: 992px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 16px;
     box-sizing: content-box;
-}
-
-h1 {
-    font-family: 'YesevaOne';
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 55px;
-    color: $primary;
-}
-
-h2{
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: $secondary;
-    margin-bottom: 8px;
-}
-
-h3 {
-    font-family: 'YesevaOne';
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 37px;
-    color: $primary;
-    margin-bottom: 64px;
-}
-
-[class].active {
-    background: $primary;
-    color: $accent;
-    a,h2 {
-        color: $accent;
-    }
-}
-
-.dots__list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    li{
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: $accent;
-    }
 }
 
 // ._ibg {
@@ -78,3 +30,4 @@ h3 {
 // body._lock {
 //     overflow: hidden;
 // }
+
