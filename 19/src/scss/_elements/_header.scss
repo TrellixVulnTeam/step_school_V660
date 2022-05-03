@@ -1,0 +1,44 @@
+.menu-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__logo{
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 120%;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+
+    &__link {
+        font-weight: 700;
+        line-height: 120%;
+    }
+}
+
+
+
+
+@media(max-width: 912px) {
+    .menu-header {
+        height: 65px;
+
+        &__list {
+            display: none;
+        }
+    }
+}
+
+@media(max-width: 414px) {
+    .menu-header {
+        height: 57px;
+    }
+}
