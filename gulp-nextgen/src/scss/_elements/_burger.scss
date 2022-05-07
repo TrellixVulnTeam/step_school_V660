@@ -1,0 +1,100 @@
+.menu-burger {
+    display: none;
+    position: relative;
+    width: 30px;
+    height: 22px;
+
+    &__label {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        z-index: 3;
+
+        &>span {
+            width: 100%;
+            height: 2px;
+            background: $primary;
+        }
+    }
+
+    &__input-box {
+        position: absolute;
+        opacity: 0;
+    }
+
+    &__list {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+        height: 100%;
+        padding-top: 248px;;
+        align-items: center;
+        justify-content: flex-start;
+        top: 0;
+        right: -100%;
+        transition: .5s;
+        visibility: hidden;
+        background: $dark-xl;
+        z-index: 2;
+    }
+
+    &__link{
+        position: relative;
+        font-size: 32px;
+        line-height: 160%;
+        color: $dark-s;
+
+        &_active {
+            color: $light-s;
+            &::after {
+                position: absolute;
+                content: "";
+                bottom: -14px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: $primary;
+            }
+        }
+    }
+
+    &__input-box:checked ~ &__label {
+        transform: rotate(90deg);
+        transition: .5s;
+    }
+
+    &__input-box:checked ~ &__list {
+        visibility: visible;
+        right: 0;
+    }
+}
+
+@media (max-width: 722px) {
+
+    .menu-burger {
+        display: block;
+    }
+}
+
+
+@media (max-width: $phone) {
+
+    .menu-burger {
+        &__list {
+            padding-left: 55px;
+        }
+    }
+}
+
+@media (max-width: 335px) {
+    .menu-burger__list {
+        padding-left: 0;
+    }
+}
