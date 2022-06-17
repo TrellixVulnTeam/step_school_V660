@@ -1,21 +1,53 @@
-const shape = { color: 'white-red-white', draw() {return `${this.color} ${this.name}`}, };
+const shape = {
+
+    color: 'white-red-white',
+
+    draw() {
+        return `${this.color} ${this.name}`
+    }, 
+};
 
 const rectangle = Object.create(shape, { 
+
     name: { value: 'rectangle' }, 
-    sides: { value: {l: 25, h: 10} },
-    points: { value: {x: 0, y: 0, x1: 0, y1: 10, x2: 25, y2: 10, x3: 25, y3: 0} },  
+
+    sides: { value: {
+
+            l: 25, 
+            h: 10,
+        } 
+    },
+
+    points: { value: {
+
+            x1: 0, 
+            y2: 0,
+            x2: 0, 
+            y2: 10, 
+            x3: 25, 
+            y3: 10, 
+            x4: 25, 
+            y4: 0,
+        } 
+    },  
 });
 
 const circle = Object.create(shape, {
-    name: { value: 'circle' }, 
-    raius: { value: 15 }, 
-    point: { value: {x: 0, y: 0} },
+    name: { value: 'circle' },
+
+    raius: { value: 15 },
+
+    point: { value: {
+
+            x: 0,
+            y: 0,
+        } 
+    },
 });
 
 const shapes = [rectangle, circle];
 
 shapes.forEach(shape => console.log(shape.draw()));
-
 
 /*******************************************************************************************************/
 
@@ -29,8 +61,6 @@ function Student(firstName, lastName, group, averageMark) {
 Student.prototype.getScholarship = function() {
     return this.averageMark >= 5 ? 100 : 80;
 };
-
-
 
 function Aspirant(firstName, lastName, group, averageMark, work) {
     Student.apply(this, arguments);
@@ -49,13 +79,9 @@ Aspirant.prototype.getScholarship = function() {
 }
 
 const student = new Student('David', 'Jonson', 1, 4);
-const aspirant = new Aspirant('Simon', 'Smith', 2, 7, 'Work')
-const arr = [student, aspirant]
 
-console.log(aspirant.firstName)
-console.log(aspirant.lastName)
-console.log(aspirant.getScholarship())
+const aspirant = new Aspirant('Simon', 'Smith', 2, 7, 'Work');
+
+const arr = [student, aspirant];
 
 arr.forEach(person => console.log(person.getScholarship()));
-
-console.log(Aspirant.prototype.constructor === Aspirant)
