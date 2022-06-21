@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        li{
+            list-style: square;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <p>text1</p>
+        </li>
+        <li>
+            <p class="small">text2</p>
+        </li>
+        <li>
+            <p>text3</p>
+        </li>
+        <li>
+            <p class="big">text4</p>
+        </li>
+        <li>
+            <p>text5</p>
+        </li>
+    </ul>
+
+    <script>
+
+       const listEvenP = document.body.querySelectorAll('li:nth-child(even) p');
+       listEvenP.forEach(p => p.style.textDecoration = 'underline');
+
+       const p = document.body.querySelector('li:nth-child(3) p');
+       p.remove();
+
+       const listLi = document.body.querySelectorAll('li');
+       listLi.forEach(li => li.classList.add('item'));
+
+       const listP = document.body.querySelectorAll('p');
+       listP.forEach(p => p.removeAttribute('class'));
+
+    </script>
+</body>
+</html>

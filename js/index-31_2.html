@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        div {
+            margin: 50px;
+            padding: 50px;
+            border: 2px black dashed;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div></div>
+        <div>
+            <div>
+                <div></div>
+                <div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <div></div>
+        <div>
+            <div></div>
+            <div>
+                <div></div>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+        <div></div>
+    </div>
+
+    <script>
+
+        const listDiv = document.body.querySelectorAll('div');
+
+        listDiv.forEach(div => {
+
+            const size = div.children.length;
+
+            size === 0 &&  (div.style.backgroundColor = 'blue');
+            size === 1 &&  (div.style.backgroundColor = 'yellow');
+            size > 2 &&  (div.style.backgroundColor = 'gray');
+        });
+
+    </script>
+</body>
+</html>
