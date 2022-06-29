@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: cornflowerblue;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: conic-gradient(tomato 0deg, tomato 90deg, gold 90deg, gold 180deg, lime 180deg, lime 270deg, royalblue 270deg);;
+            transition: all .5s linear;
+        }
+
+       
+
+
+    </style>
+</head>
+<body>
+   
+    <div></div>
+
+   
+    <script>
+
+        const div = document.querySelector('div');
+
+        const spanX = (document.documentElement.clientWidth - div.clientWidth) / 20;
+        const spanY = (document.documentElement.clientHeight - div.clientHeight) / 20;
+        
+        function handlerLocation(obj, togglerX, togglerY) {
+
+            const left = obj.style.left, top = obj.style.top;
+            obj.style.left = (left ? parseFloat(left) + (togglerX ? spanX : -spanX) : (togglerX ? spanX : -spanX)) + 'px';
+            obj.style.top = (top ? parseFloat(top) + (togglerY ? spanY : -spanY) : (togglerY ? spanY : -spanY)) + 'px';
+        }
+
+        function getLocation(cursor, obj) {
+
+            const leftBorder =  obj.offsetLeft;
+            const topBorder = obj.offsetTop;
+            const centerX =  leftBorder + obj.clientWidth / 2;
+            const centerY = topBorder + obj.clientHeight / 2;
+            const rightBorder = leftBorder + obj.clientWidth;
+            const bottomBorder = topBorder + obj.clientWidth;
+
+            const squareTopLeft = cursor.clientX > leftBorder && cursor.clientX < centerX && 
+                                  cursor.clientY > topBorder && cursor.clientY < centerY;
+
+            const squareTopRight = cursor.clientX > centerX && cursor.clientX < rightBorder && 
+                                   cursor.clientY > topBorder && cursor.clientY < centerY;
+
+            const squareBottomLeft = cursor.clientX > leftBorder && cursor.clientX < centerX && 
+                                     cursor.clientY > centerY && cursor.clientY < bottomBorder;
+
+            const squareBottomRight = cursor.clientX > centerX && cursor.clientX < rightBorder && 
+                                      cursor.clientY > centerY && cursor.clientY < bottomBorder;
+
+            squareTopLeft && handlerLocation(obj, false, false);
+            squareTopRight && handlerLocation(obj, true, false);
+            squareBottomLeft && handlerLocation(obj, false, true);
+            squareBottomRight && handlerLocation(obj, true, true);
+        }
+
+        div.onmousemove = () => {
+            getLocation(event, event.currentTarget);
+            div.onmousemove = null;
+        };
+
+        div.addEventListener('transitionend', function() {
+            this.onmousemove = () => {
+                getLocation(event, event.currentTarget);
+                div.onmousemove = null;
+            };
+        })
+            
+    </script>
+
+</body>
+</html>
