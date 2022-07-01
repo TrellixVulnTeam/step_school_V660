@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <style>
+
+        body {
+            background: cornflowerblue;
+        }
+
+        ul {
+            color: gold;
+            font-size: 48px;
+            list-style: none;
+        }
+
+        li {
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <script>
+
+        const list = document.createElement('ul');
+        document.body.append(list);
+
+        for(let i = 1; i <= 15; i++) {
+            const item = document.createElement('li');
+            item.textContent = i;
+            list.append(item);
+        }
+
+        list.onclick = (event) => {
+            const target = event.target;
+            target.tagName === 'LI' && handleClick(target, 'left');
+        }
+
+        list.oncontextmenu = (event) => {
+            event.preventDefault();
+            const target = event.target;
+            target.tagName === 'LI' && handleClick(target, 'right');
+        }
+
+        function handleClick(item, operand) {
+
+            const prev = item.previousElementSibling?.textContent;
+            const next = item.nextElementSibling?.textContent;
+
+            if(!prev && !next) {
+                return;
+            }
+
+            operand === 'left' && (item.textContent = parseInt(prev || '0') + parseInt(next || '0'));
+            operand === 'right' && (item.textContent = parseInt(prev || '1') * parseInt(next || '1')); 
+        }
+
+    </script>
+
+</body>
+</html>
