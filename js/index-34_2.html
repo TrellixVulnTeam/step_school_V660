@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+</head>
+<body>
+
+    <form action="#" name="task">
+        <input type="url" placeholder="enter url">
+        <input type="submit" value="add next image">
+        <div></div>
+    </form>
+
+    <script>
+
+        const form = document.forms.task;
+        const [url, button] = form.elements;
+        const div = form.lastElementChild;
+
+        form.onsubmit = () => {
+
+            event.preventDefault();
+
+            const image = new Image();
+
+            image.onload = () => div.append(image);
+            image.onerror = () => div.innerHTML += '<p>some error has occurred</p>';
+            image.src = url.value;
+        }
+
+        //https://klike.net/uploads/posts/2019-06/1560329641_2.jpg
+
+    </script>
+  
+ 
+</body>
+</html>
+
