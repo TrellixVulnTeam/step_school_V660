@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+   <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculator__box {
+            width: 500px;
+            height: 800px;
+        }
+
+        .calculator__screen {
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            width: 100%;
+            font-size: 2.5rem;
+        }
+
+        .calculator__keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            min-height: 100px;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+   </style>
+    
+</head>
+<body>
+
+    <div class="calculator__box">
+
+        <div class="calculator__screen">
+            <textarea name="screen" id="screen" rows="3"></textarea>
+        </div>
+
+        <ul class="calculator__keys">
+
+            <li class="calculator__key"><button type="button" data-operator="clear">AC</button></li>
+            <li class="calculator__key"><button type="button" data-operator="back">RM</button></li>
+            <li class="calculator__key"><button type="button" data-operator="(">(</button></li>
+            <li class="calculator__key"><button type="button" data-operator=")">)</button></li>
+
+            <li class="calculator__key"><button type="button" data-operand="1">1</button></li>
+            <li class="calculator__key"><button type="button" data-operand="2">2</button></li>
+            <li class="calculator__key"><button type="button" data-operand="3">3</button></li>
+            <li class="calculator__key"><button type="button" data-operator="+">plus</button></li>
+
+            <li class="calculator__key"><button type="button" data-operand="4">4</button></li>
+            <li class="calculator__key"><button type="button" data-operand="5">5</button></li>
+            <li class="calculator__key"><button type="button" data-operand="6">6</button></li>
+            <li class="calculator__key"><button type="button" data-operator="-">minus</button></li>
+
+            <li class="calculator__key"><button type="button" data-operand="7">7</button></li>
+            <li class="calculator__key"><button type="button" data-operand="8">8</button></li>
+            <li class="calculator__key"><button type="button" data-operand="9">9</button></li>
+            <li class="calculator__key"><button type="button" data-operator="/">divide</button></li>
+
+            <li class="calculator__key"><button type="button" data-operand="0">0</button></li>
+            <li class="calculator__key"><button type="button" data-operand=".">dot</button></li>
+            <li class="calculator__key"><button type="button" data-operator="equals">equals</button></li>
+            <li class="calculator__key"><button type="button" data-operator="*">mult</button></li>
+
+        </ul>
+    </div>
+    
+    <script>
+
+        const calculator = document.body.querySelector('.calculator__box');
+        const field = document.getElementById('screen');
+
+        calculator.addEventListener('click', (event) => {
+
+            const {target} = event;
+
+            if(target.tagName === 'BUTTON') {
+                const data = target.dataset.operand || target.dataset.operator;
+
+                switch(data) {
+                    case 'clear':
+                        field.value = '';
+                        break;
+                    case 'back':
+                        field.value = field.value.slice(0, field.value.length - 1);
+                        break;
+                    case 'equals': 
+                        field.value = eval(field.value);
+                        break;
+                    default:
+                        field.value += data;
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>
