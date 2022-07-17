@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container py-3">
+        <div class="row d-flex justify-content-between align-items-center mb-2">
+            <div class="col-2 d-flex gap-2">
+                <label for="name" class="col-form-label">section&nbspsize</label>
+                <input type="number" min="1" step="1" max ="10" class="form-control me-5" id="number" value="5">
+            </div>
+            <div class="col-3">
+                <form class="d-flex gap-1" role="search" name="search">
+                    <input class="form-control" type="search" placeholder="search" aria-label="search">
+                    <button class="btn btn-outline-success" type="submit">search</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row state"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        const contentArea = document.body.querySelector('.row.state');
+        const contentSize = document.getElementById('number');
+
+        let content;
+        let isSorted;
+
+        const sortHandler = (arr, factor) => arr.sort((a, b) => {
+            if(isNaN(+a[factor])) {
+                return a[factor] > b[factor] ? 1 : a[factor] === b[factor] ? 0 : -1;
+            } else {
+                return a[factor] - b[factor];
+            }
+        })
+
+        contentSize.onchange = getUsers;
+        contentSize.onkeyup = (event) => event.preventDefault();
+        contentSize.onkeydown = (event) => event.preventDefault();
+
+        const form = document.forms.search;
+        const searchInput = form.elements[0];
+
+        form.onsubmit = (event) => {
+            event.preventDefault();
+            if(!searchInput.value) return false;
+            const tbody = document.querySelector('tbody');
+            const data = searchInput.value.trim().replace(/\s+/g, ' ');
+            const regexp = new RegExp(data, 'i');
+            [...tbody.rows].forEach(row => !regexp.test(row.textContent) && (row.hidden = true));
+        }
+
+        /*********************************add table****************************************/
+
+        function addTable(users, section = 1) {
+
+            const size = contentSize.value;
+            const start = size * (section - 1);
+            const end = section * size;
+            const headers = Object.keys(users[0]).slice(start, end);
+
+            addHeaders(headers);
+            addBody(users, headers);
+        }
+
+        /*********************************add head****************************************/
+
+        function addHeaders(headers) {
+
+            const thead = document.createElement('thead');
+            document.querySelector('table').append(thead);
+            const tr = document.createElement('tr');
+            tr.className = 'text-center';
+            thead.append(tr);
+
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.setAttribute('scope', 'col');
+                th.textContent = header;
+                tr.append(th);
+            })
+
+            thead.onclick = (event) => {
+                const { target } = event;
+                if(target.tagName === 'TH') {
+                    const factor = target.textContent;
+
+                    if(isSorted === factor) {
+                        content.reverse();
+                    } else {
+                        isSorted = factor;
+                        sortHandler(content, factor);
+                    }
+
+                    document.querySelector('tbody').remove();
+                    addBody(content, headers)
+                }
+            }
+        }
+
+        /*********************************add body****************************************/
+
+        function addBody(users, headers) {
+
+            const tbody = document.createElement('tbody');
+            document.querySelector('table').append(tbody);
+
+            users.forEach(user => {
+                const tr = document.createElement('tr');
+
+                headers.forEach(header => {
+                    const td = document.createElement('td');
+
+                    if(header === 'image') {
+                        td.innerHTML = `<img src="${user[header]}" alt="robot">`;
+
+                    } else if(header === 'hair') {
+                        const {color, type} = user[header];
+
+                        td.innerHTML = `<p>color: ${color}</p>
+                                        <p>type: ${type}</p>`;
+
+                    } else if(header === 'address') {
+                        const {address, city, coordinates, postalCode, state} = user[header];
+
+                        td.innerHTML = `<p>city: ${city}</p>
+                                        <p>street: ${address}</p>
+                                        <p>coordinates:\nlat:&nbsp${coordinates.lat}\nlng:&nbsp${coordinates.lng}</p>
+                                        <p>postalCode: ${postalCode}</p>
+                                        <p>state: ${state}</p>`;
+
+                    } else if(header === 'bank') {
+                        const {cardExpire, cardNumber, cardType, currency, iban} = user[header];
+
+                        td.innerHTML = `<p>cardType: ${cardType}</p>
+                                        <p>cardExpire: ${cardExpire}</p>
+                                        <p>cardNumber: ${cardNumber}</p>
+                                        <p>currency: ${currency}</p>
+                                        <p>iban:\n${iban}</p>`;
+
+                    } else if(header === 'company') {
+                        const {address, department, name, title} = user[header];
+
+                        td.innerHTML = `<p>title: ${title}</p>
+                                        <p>street: ${address.address}</p>
+                                        <p>city: ${address.city}</p>
+                                        <p>coordinates: lat:&nbsp${address.coordinates.lat} lng:&nbsp${address.coordinates.lng}</p>
+                                        <p>postalCode: ${address.postalCode}</p>
+                                        <p>state: ${address.state}</p>
+                                        <p>department: ${department}</p>
+                                        <p>name: ${name}</p>`;
+                    } else {
+                        td.textContent = user[header];
+                    }
+                    
+                    tr.append(td);
+                })
+
+                tbody.append(tr);
+            })
+        }
+
+        /*********************************add buttons****************************************/
+
+        function addBtn(users) {
+
+            const amountBtn = Math.ceil(Object.keys(users[0]).length / contentSize.value);
+            const btnGroup = document.body.querySelector('.btn-group');
+            console.log(users.length, contentSize.value, amountBtn)
+
+            for (let i = 1; i <= amountBtn; i++) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'btn btn-outline-secondary';
+                button.textContent = i;
+                btnGroup.append(button);
+            }
+
+            btnGroup.onclick = (event) => {
+                const { target } = event;
+
+                if(target.tagName = 'BUTTON') {
+                    const targetIndex = [...btnGroup.children].indexOf(target) + 1;
+                    document.querySelector('table').innerHTML = '';
+                    addTable(users, targetIndex);
+                }
+            }
+        }
+
+        /*********************************add users****************************************/
+
+        async function getUsers() {
+
+            contentArea.innerHTML = `<button class="btn btn-primary m-4" type="button" disabled>
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        Loading...
+                                    </button>`;
+            try {
+                const response = await fetch('https://dummyjson.com/users');
+
+                if(!response.ok) {
+                    throw new Error(`${response.status} ${response.statusText}`);
+                }   
+
+                const { users } = await response.json();
+                
+                content = users;
+
+                contentArea.innerHTML =  `<div class="btn-toolbar justify-content-center mb-3" role="toolbar">
+                                            <div class="btn-group" role="group"></div>
+                                        </div>
+                                        <table class="table"></table>`;
+
+                addTable(users);
+                addBtn(users);
+
+            } catch(error) {
+                contentArea.innerHTML = `<div class="alert alert-danger d-flex align-items-center justify-content-center" role="alert">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg>
+                                            <div>${error}</div>
+                                        </div>`;
+            }
+        }
+
+        getUsers();
+
+    </script>
+</body>
+
+</html>
