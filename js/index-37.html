@@ -57,7 +57,10 @@
             const tbody = document.querySelector('tbody');
             const data = searchInput.value.trim().replace(/\s+/g, ' ');
             const regexp = new RegExp(data, 'i');
-            [...tbody.rows].forEach(row => !regexp.test(row.textContent) && (row.hidden = true));
+            [...tbody.rows].forEach(row => {
+                row.hidden = false;
+                !regexp.test(row.textContent) && (row.hidden = true);
+            });
         }
 
         /*********************************add table****************************************/
