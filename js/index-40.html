@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanvaS</title>
+
+    <style>
+        .wrapper {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <canvas id="star" width="900" height="900"></canvas>
+    </div>
+    
+    <script>
+    
+        function drawStar(x, y, peaks, maxR, minR, lineWidth, lineColor, bgColor) {
+
+            const canvas = document.getElementById('star');
+            const ctx = canvas.getContext('2d'); 
+            const corner = Math.PI / peaks;
+
+            ctx.beginPath();
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.moveTo(0, maxR); 
+
+            for(let i = 1; i <= 2 * peaks; i++) {
+                ctx.rotate(corner);
+                ctx.lineTo(0, i % 2 ? minR : maxR);
+            }
+
+            ctx.restore();
+            ctx.closePath();
+
+            if(lineWidth) {
+                ctx.lineWidth = lineWidth;
+                ctx.strokeStyle = lineColor;
+
+                ctx.stroke();
+            }
+
+            ctx.fillStyle = bgColor;
+
+            ctx.fill();
+        }
+
+        drawStar(150, 150, 5,  90,  40, 35,   'gray', 'lime');
+        drawStar(450, 150, 16, 120, 40, null,  null,  'orange');
+        drawStar(250, 450, 8,  100, 50, 15,   'gray', 'cornflowerblue');
+        drawStar(550, 450, 16, 100, 80, 15,   'gray', 'gold');
+
+</script>
+    
+</body>
+</html>

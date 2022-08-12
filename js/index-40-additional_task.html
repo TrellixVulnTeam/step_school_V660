@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanvaS</title>
+
+    <style>
+        .wrapper {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #board {
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <canvas id="board" width="900" height="900"></canvas>
+    </div>
+    
+    <script>
+
+        function drawPlot(a, b, c) {
+
+            const canvas = document.getElementById('board');
+            const ctx = canvas.getContext('2d'); 
+            const boardWidth = canvas.clientWidth;
+            const boardHeight = canvas.clientHeight;
+            const scaleX = 25;
+            const scaleY = 25;
+            const startX = boardWidth / 2;
+            const startY = boardHeight / 2;
+            const step = 5;
+
+            ctx.beginPath();
+            ctx.strokeStyle = 'royalblue';
+            ctx.font = `10px Arial`;
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'top';
+            
+            for(let i = scaleX; i < boardWidth; i += scaleX) {
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, boardHeight); 
+                ctx.fillText((i - startX) / scaleX, i - step, startY + step)
+            }
+
+            for(let i = scaleY; i < boardWidth; i += scaleY) {
+                ctx.moveTo(0, i);
+                ctx.lineTo(boardWidth, i);
+                ctx.fillText((startY - i) / scaleY, startX - step, i + step)
+            }
+
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.beginPath()
+            ctx.fillText('X', boardWidth - 2 * step, startY - 2.5 * step);
+            ctx.fillText('Y', startY + 2.5 * step, step + step);
+            ctx.strokeStyle = 'black';
+            ctx.moveTo(0, startY);
+            ctx.lineTo(boardWidth, startY);
+            ctx.moveTo(startX, 0);
+            ctx.lineTo(startX, boardHeight);
+            ctx.stroke();
+            ctx.closePath();
+
+            //ctx.fillStyle = 'darkgreen';
+            // for(let i = 0; i < boardWidth; i++) {
+            //     ctx.beginPath();
+            //     const x = (i - startX) / scaleX;
+            //     const y = a * x * x + b * x + c;
+            //     const canvasX = startX + x * scaleX;
+            //     const canvasY = startY - y * scaleY;
+
+            //     ctx.arc(canvasX, canvasY, 1, 0, 2 * Math.PI);
+            //     ctx.fill()
+            //     ctx.closePath()
+            // }
+           
+            ctx.beginPath();
+            for(let i = 0; i < boardWidth; i++) {
+
+                const x = (i - startX) / scaleX;
+                const y = a * x * x + b * x + c;
+                const canvasX = startX + x * scaleX;
+                const canvasY = startY - y * scaleY;
+                i === 0 && ctx.moveTo(canvasX, canvasY);
+                ctx.lineTo(canvasX, canvasY);
+            }
+            
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'darkgreen';
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        drawPlot(0.1, -0.8, -3);
+
+    </script>
+    
+</body>
+</html>
