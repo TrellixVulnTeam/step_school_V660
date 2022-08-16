@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class BtnCounter extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {num: 0};
+            }
+
+            addOne = () => this.setState(state => ({num: state.num + 1}));
+
+            render() {
+                return (
+                    <button onClick={this.addOne}>
+                        current click's number: {this.state.num}
+                    </button>
+                );
+            }
+        }
+
+        class BtnInvisible extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {hidden: false};
+            }
+
+            hideBtn = () => this.setState(state => ({hidden: !state.hidden}));
+
+            render() {
+                return (
+                    <button onClick={this.hideBtn} hidden={this.state.hidden}>
+                        {this.props.content}
+                    </button>
+                );
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(
+            <React.Fragment>
+                <div>
+                    <BtnCounter/>
+                </div>
+                <div>
+                    <BtnInvisible content="click me and I will hide"/>
+                </div>
+            </React.Fragment>
+        );
+    </script>
+</body>
+</html>
