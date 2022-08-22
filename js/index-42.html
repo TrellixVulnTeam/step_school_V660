@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <style>
+
+        #root {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #root > div{
+            width: 300px;
+            height: 300px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: black;
+        }
+
+        #root > div button:last-child{
+            grid-area: 2/2/3/3;
+        }
+
+        #root > div button:first-child,
+        #root > div button:nth-child(3) {
+            translate: 0 50%;
+        }
+
+        button {
+            cursor: pointer;
+            background: darkslateblue;
+            text-transform: uppercase;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class Area extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {words: ['left', 'top', 'right', 'bottom'], translate: '0px 0px'};
+            }
+
+            moveArea = (e) => {
+                const direction = e.currentTarget.textContent;
+               
+                this.setState(state => {
+                    let [x, y] = state.translate.split(' ').map(value => parseInt(value));
+                    direction === 'left' && (x -= 10);
+                    direction === 'right' && (x += 10);
+                    direction === 'top' && (y -= 10);
+                    direction === 'bottom' && (y += 10);
+                    return {translate: `${x}px ${y}px`};
+                })
+            }
+            
+            render() {
+                return (
+                    <div style={{translate: this.state.translate}}>
+                        {this.state.words.map(word => <button key={word} onClick={this.moveArea}>{word}</button>)}
+                    </div>
+                )
+            }
+        }
+
+        class Slider extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {sources: [
+                                        'https://cdn.pixabay.com/photo/2019/10/15/13/40/winter-4551699_960_720.jpg',
+                                        'https://cdn.pixabay.com/photo/2021/04/22/06/40/duck-6198196_960_720.jpg',
+                                        'https://cdn.pixabay.com/photo/2021/04/17/23/58/bunny-6187026_960_720.jpg',
+                                        'https://cdn.pixabay.com/photo/2020/09/18/21/16/child-5582985_960_720.jpg'
+                                       ], current: 0};
+            }
+
+            showNextImg = () => this.setState(state => ({ current: state.current === state.sources.length - 1 ? 0 : state.current + 1 }));
+
+            render() { 
+                return <img src={this.state.sources[this.state.current]} alt="image" onClick ={this.showNextImg}></img>;
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(
+            <React.Fragment>
+                <Area/>
+                <Slider/>
+            </React.Fragment>
+            );
+    </script>
+</body>
+</html>
