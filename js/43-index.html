@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: fit-content;
+            margin: 50px auto;
+            border: 1px solid #dddddd;
+            border-collapse: collapse; 
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            padding: 5px;
+            cursor: pointer;
+        }  
+        
+        .color {
+            background: cornflowerblue;
+        }
+
+        .default {
+            background: transparent;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        div > ul {
+            width: fit-content;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        ul > li > ul {
+            width: 90px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class Table extends React.Component {
+            constructor(props) {
+                super(props);
+                this.template = Array.from({length: this.props.row}, 
+                     (tr, r) => Array.from({length: this.props.col}, 
+                     (td, c) => ({text: `${r + 1}-${c + 1}`})));
+                this.state = {template: this.template};
+            }
+
+            handlerClick(row, col) {
+                const maxSizeRow = this.state.template.length;
+                const maxSizeCol = this.state.template[0].length;
+                const currentTemplate = this.template;
+                currentTemplate.forEach(r => r.forEach(c => c.bg = false));
+                for(let i = (row - 1 < 0 ? 0 : row - 1); i <= (row + 1 === maxSizeRow ? row : row + 1); i++) {
+                    for(let j = (col - 1 < 0 ? 0 : col - 1); j <= (col + 1 === maxSizeCol ? col : col + 1); j++) {
+                        if(i === row && j === col) {
+                            continue;
+                        } else {
+                            currentTemplate[i][j].bg = true;
+                        }
+                    }
+                }
+                this.setState(state => ({template: currentTemplate}))
+            };
+
+            render() {
+                return (
+                    <table>
+                        <tbody>
+                            {this.state.template.map((row, i) => 
+                                <tr key={i}>{row.map((cell, j) => 
+                                    <td 
+                                        key={j} 
+                                        onClick={this.handlerClick.bind(this, i, j)}
+                                        className={cell.bg ? 'color' : 'default'}>
+                                        {cell.text}
+                                    </td>)}
+                                </tr>)}
+                        </tbody>
+                    </table>
+                )
+            }
+        }
+
+        class List extends React.Component {
+            constructor(props) {
+                super(props);
+                this.data = Array.from({length: 10}, (el, i) => i + 1);
+            }
+
+            render() {
+                const list = this.data.map((li, i) => 
+                    <li 
+                        key={Math.random() * (i + 1)}>
+                        {`${this.props.number} x ${li} = ${this.props.number * li}`}
+                    </li>);
+
+                return <ul>{list}</ul>
+            }
+        }
+        
+        class MultiplyList extends React.Component {
+            constructor(props) {
+                super(props);
+                this.data = Array.from({length: 10}, (el, i) => i + 1);
+            }
+
+            render() {
+                return (
+                    <ul>
+                        {this.data.map(li => <li key={Math.random() * li}><List number={li}/></li>)}
+                    </ul>
+                )
+            }
+        } 
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        root.render(
+            <React.Fragment>
+                <Table row='9' col='8'/>
+                <MultiplyList/>
+            </React.Fragment>
+        );
+    </script>
+</body>
+</html>
