@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+    
+    <div id="root"></div>
+    
+
+    <script type="text/babel">
+
+        class Ul extends React.Component {
+            constructor(props) {
+                super(props);
+                this.list = Array.from({length: this.props.size}, (li, i) => i + 1);
+                this.state = { list: this.list };
+            }
+
+            handleChangeData = (index, operator) => {
+
+                if(operator === '+') {
+                    this.list = this.list.map((li, i, ul) => 
+                        i === index ? (ul[i - 1] || 0) + (ul[i + 1] || 0) : li);
+                }
+
+                if(operator === '*') {
+                    this.list = this.list.map((li, i, ul) => 
+                        i === index ? (ul[i - 1] || 1) * (ul[i + 1] || 1) : li);
+                }
+                
+                this.setState(state => ({ list: this.list }));
+            } 
+
+            render() {
+
+                return <ul>
+                            {this.state.list.map((li, i) => 
+                                <Li 
+                                    key={i} 
+                                    onChangeData={this.handleChangeData} 
+                                    number={li}
+                                    index={i}
+                                />
+                            )}
+                      </ul>
+                
+            }
+        }
+
+        class Li extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
+            handleClick = () => this.props.onChangeData(this.props.index, '+');
+            
+            handleContextMenu = (event) => {
+                event.preventDefault();
+                this.props.onChangeData(this.props.index, '*');
+            }
+
+            render() {
+                
+                return <li
+                            onClick={this.handleClick} 
+                            onContextMenu={this.handleContextMenu}
+                        >
+                            {this.props.number} 
+                      </li>
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Ul size="20"/>);
+
+    </script>
+</body>
+</html>

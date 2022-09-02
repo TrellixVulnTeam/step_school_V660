@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <style>
+
+        
+    </style>
+
+</head>
+<body>
+    
+    <div id="root"></div>
+    
+
+    <script type="text/babel">
+
+        //https://klike.net/uploads/posts/2019-06/1560329641_2.jpg
+
+        class NewImage extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {url: '', src: '', error: ''};
+            }
+
+            handleURL = event => this.setState(state => ({url: event.target.value}));
+            
+
+            handleSubmit = event => {
+                event.preventDefault();
+                const src = this.state.url;
+                this.setState(state => ({src, url: ''}));
+            }
+            
+            handleError = () => this.setState(state => ({error: 'Error: invalid url'}));
+            
+            handleLoad = () => this.setState(state => ({error: ''}));
+
+            render() {
+                return (
+                    <form action="#" onSubmit={this.handleSubmit}>
+                        <input 
+                            type="url" 
+                            placeholder="there's url here" 
+                            onChange={this.handleURL}
+                        />
+                        <input type="submit" value="add image"/>
+                        <div>
+                            <img 
+                                src={this.state.src} 
+                                onLoad={this.handleLoad}
+                                onError={this.handleError}
+                                alt="" height="250"        
+                            />
+                        </div> 
+                        <div> {this.state.error}</div>
+                    </form>
+                )
+            }
+        }
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<NewImage/>);
+
+        
+    </script>
+</body>
+</html>
