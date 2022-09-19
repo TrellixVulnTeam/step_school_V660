@@ -1,0 +1,22 @@
+tbody > tr {
+    cursor: pointer;
+    transition: background-color .3s linear;
+}
+
+tbody > tr:hover{
+    background-color: cornflowerblue;
+}
+
+.active {
+    background-color: greenyellow;
+}
+
+.active:hover{
+    background-color: greenyellow;;
+}
+
+figure {
+    width: fit-content;
+    text-align: center;
+}
+
