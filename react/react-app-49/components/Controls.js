@@ -7,7 +7,6 @@ export const Controls = props => {
         return list.map(item => {
             if (!item.isChecked) {
                 item.isChecked = true;
-                return item;
             }
             return item;
         })
@@ -17,7 +16,6 @@ export const Controls = props => {
         return list.map(item => {
             if (item.isChecked) {
                 item.done = true;
-                return item;
             }
             return item;
         })
@@ -28,7 +26,6 @@ export const Controls = props => {
             if (item.isChecked) {
                 item.isChecked = false;
                 item.done = false;
-                return item;
             }
             return item;
         })

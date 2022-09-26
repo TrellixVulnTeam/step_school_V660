@@ -15,7 +15,6 @@ export const TodoList = () => {
         const newList = list.map(item => {
             if(item.id === id) {
                 item.done = !item.done;
-                return item;
             }
             return item;
         });
@@ -26,7 +25,6 @@ export const TodoList = () => {
         const newList = list.map(item => {
             if(item.id === id) {
                 item.isChecked = !item.isChecked;
-                return item;
             }
             return item;
         });
