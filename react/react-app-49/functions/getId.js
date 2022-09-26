@@ -1,0 +1,1 @@
+export const getId = value => Date.now() + (Math.random() * value.length).toFixed(3);
